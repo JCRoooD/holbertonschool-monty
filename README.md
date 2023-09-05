@@ -1,5 +1,4 @@
-
-<img src="https://media.giphy.com/media/RI4LTRjrVJhTskGtrb/giphy.gif"/>
+<img src="https://media.giphy.com/media/RI4LTRjrVJhTskGtrb/giphy-downsized.gif"/>
 
 ## Description
 The goal of this project is to create an interpreter for Monty ByteCodes files. 

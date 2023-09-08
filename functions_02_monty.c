@@ -1,13 +1,12 @@
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "monty.h"
 
-#include "monty.h"
-
-/* Function to swap the top two elements of the stack */
+/**
+ * swap - Swaps the top two elements of the stack.
+ * @stack: Pointer to the head of the stack
+ * @line_number: Line number being executed from Monty file
+ */
 void swap(stack_t **stack, unsigned int line_number)
 {
     if (!stack || !*stack || !(*stack)->next)
@@ -35,9 +34,8 @@ void add(stack_t **stack, unsigned int line_number)
     }
 
     (*stack)->next->n += (*stack)->n;
-    pop(stack, line_number);
+    pop(stack, line_number); // You need to implement the pop function if it's not already implemented.
 }
-
 
 /**
  * nop - Does nothing (no-op).

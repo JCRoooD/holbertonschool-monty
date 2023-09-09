@@ -13,25 +13,25 @@
  */
 void (*get_op_func(char *opcode))(stack_t **, unsigned int)
 {
-    instruction_t ops[] = {
-        {"push", push},
-        {"pall", pall},
-        {"pint", pint},
-        {"pop", pop},
-        {"swap", swap},
-        {"add", add},
-        {"nop", nop},
-        {NULL, NULL}
-    };
-    int i = 0;
+	instruction_t ops[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{NULL, NULL}
+	};
+	int i = 0;
 
-    while (ops[i].opcode)
-    {
-        if (strcmp(ops[i].opcode, opcode) == 0)
-            return (ops[i].f);
-        i++;
-    }
-    return (NULL);
+	while (ops[i].opcode)
+	{
+		if (strcmp(ops[i].opcode, opcode) == 0)
+			return (ops[i].f);
+		i++;
+	}
+	return (NULL);
 }
 
 /**
@@ -42,16 +42,16 @@ void (*get_op_func(char *opcode))(stack_t **, unsigned int)
  */
 void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 {
-    char *opcode;
-    void (*func)(stack_t **, unsigned int);
+	char *opcode;
+	void (*func)(stack_t **, unsigned int);
 
-    opcode = strtok(line, " \t\n");
-    if (!opcode)
-        return;
+	opcode = strtok(line, " \t\n");
+	if (!opcode)
+		return;
 
-    func = get_op_func(opcode);
-    if (func)
-        func(stack, line_number);
-    else
-        monty_error("unknown instruction", line_number);
+	func = get_op_func(opcode);
+	if (func)
+		func(stack, line_number);
+	else
+		monty_error("unknown instruction", line_number);
 }

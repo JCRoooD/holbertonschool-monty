@@ -9,15 +9,15 @@
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-    if (!stack || !*stack || !(*stack)->next)
-    {
-        fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	if (!stack || !*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-    int temp = (*stack)->n;
-    (*stack)->n = (*stack)->next->n;
-    (*stack)->next->n = temp;
+	int temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
 }
 
 /**
@@ -27,14 +27,14 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-    if (!stack || !*stack || !(*stack)->next)
-    {
-        fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	if (!stack || !*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-    (*stack)->next->n += (*stack)->n;
-    pop(stack, line_number); // You need to implement the pop function if it's not already implemented.
+	(*stack)->next->n += (*stack)->n;
+	pop(stack, line_number); /* You need to implement the pop function if it's not already implemented */
 }
 
 /**
@@ -44,9 +44,9 @@ void add(stack_t **stack, unsigned int line_number)
  */
 void nop(stack_t **stack, unsigned int line_number)
 {
-    (void)stack;
-    (void)line_number;
-    /* No operation (nop) - Do nothing */
+	(void)stack;
+	(void)line_number;
+	/* No operation (nop) - Do nothing */
 }
 
 /**
@@ -55,14 +55,14 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void free_stack(stack_t *stack)
 {
-    stack_t *current = stack;
+	stack_t *current = stack;
 
-    while (current)
-    {
-        stack_t *temp = current;
-        current = current->next;
-        free(temp);
-    }
+	while (current)
+	{
+		stack_t *temp = current;
+		current = current->next;
+		free(temp);
+	}
 }
 
 /**
@@ -71,6 +71,7 @@ void free_stack(stack_t *stack)
  */
 void exit_failure(const char *message)
 {
-    fprintf(stderr, "Error: %s\n", message);
-    exit(EXIT_FAILURE);
+	fprintf(stderr, "Error: %s\n", message);
+	exit(EXIT_FAILURE);
 }
+

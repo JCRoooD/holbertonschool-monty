@@ -8,14 +8,14 @@
  */
 void free_stack(stack_t *stack)
 {
-    stack_t *current = stack;
+	stack_t *current = stack;
 
-    while (current)
-    {
-        stack_t *temp = current;
-        current = current->next;
-        free(temp);
-    }
+	while (current)
+	{
+		stack_t *temp = current;
+		current = current->next;
+		free(temp);
+	}
 }
 
 /**
@@ -24,6 +24,6 @@ void free_stack(stack_t *stack)
  */
 void exit_failure(const char *message)
 {
-    fprintf(stderr, "Error: %s\n", message);
-    exit(EXIT_FAILURE);
+	fprintf(stderr, "Error: %s\n", message);
+	exit(EXIT_FAILURE);
 }

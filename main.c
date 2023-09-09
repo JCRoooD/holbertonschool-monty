@@ -79,7 +79,7 @@ void execute_instruction(stack_t **stack, instruction_t *instr, unsigned int lin
 	/*Add more cases for other instructions*/
 }
 
-void free_stack(stack_t **stack) {
+void free_stack(stack_t *stack) {
 	/*Implement code to free memory used by the stack*/
 	/*You should free each element and then the stack itself*/ 
 }

@@ -53,7 +53,7 @@ void nop(stack_t **stack, unsigned int line_number)
  * free_stack - Frees the entire stack.
  * @stack: Pointer to the head of the stack
  */
-void free_stack(stack_t *stack)
+void free_stack(stack_t **stack)
 {
 	stack_t *current = stack;
 
@@ -69,7 +69,7 @@ void free_stack(stack_t *stack)
  * exit_failure - Exits the program with a failure status.
  * @message: The error message to display
  */
-void exit_failure(const char *message)
+void exit_failure(const char **message)
 {
 	fprintf(stderr, "Error: %s\n", message);
 	exit(EXIT_FAILURE);

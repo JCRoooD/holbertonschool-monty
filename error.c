@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "monty.h"
 
 /* Function to print an error message and exit with failure status */

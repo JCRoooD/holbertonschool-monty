@@ -24,14 +24,23 @@ typedef struct instruction_s
 extern stack_t *top;
 
 /* Function Prototypes */
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number, char *line);
+void pall(stack_t **stack, unsigned int line_number, char *line);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-void free_stack(stack_t *stack);
+void free_stack(stack_t **stack);
+void monty_error(const char **message, unsigned int line_number);
+void memory_error();
+void exit_failure(const char **message);
+void (*get_op_func(char **opcode))(stack_t **, unsigned int);
+void execute_instruction(stack_t **stack, char *line, unsigned int line_number);
+void execute_instruction(stack_t **stack, instruction_t **instr, unsigned int line_number);
+instruction_t *get_op_func(char *opcode);
+
+
 
 #endif /* MONTY_H */
 

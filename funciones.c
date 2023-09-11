@@ -8,29 +8,29 @@
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-    int sum;
-    stack_t *temp;
+	int sum;
+	stack_t *temp;
 
-    // Check if there are at least two elements on the stack
-    if (*stack == NULL || (*stack)->next == NULL)
-    {
-        fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	/* Check if there are at least two elements on the stack */
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-    // Calculate the sum of the top two elements
-    sum = (*stack)->n + (*stack)->next->n;
+	/* Calculate the sum of the top two elements */
+	sum = (*stack)->n + (*stack)->next->n;
 
-    // Remove the top element (the second element becomes the new top)
-    temp = *stack;
-    *stack = (*stack)->next;
-    (*stack)->prev = NULL;
+	/* Remove the top element (the second element becomes the new top) */
+	temp = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
 
-    // Update the new top element with the sum
-    (*stack)->n = sum;
+	/* Update the new top element with the sum */
+	(*stack)->n = sum;
 
-    // Free the memory of the removed top element
-    free(temp);
+	/* Free the memory of the removed top element */
+	free(temp);
 }
 
 /**
@@ -42,15 +42,15 @@ void add(stack_t **stack, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-    // Check if the stack is empty
-    if (stack == NULL)
-    {
-        fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	/* Check if the stack is empty */
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-    // Print the value at the top of the stack
-    printf("%d\n", (*stack)->n);
+	/* Print the value at the top of the stack */
+	printf("%d\n", (*stack)->n);
 }
 
 /**
@@ -63,8 +63,8 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void nop(stack_t **stack, unsigned int line_number)
 {
-    // Suppress unused parameter warnings
-    (void)stack;
-    (void)line_number;
-    // This function does nothing, as it's a placeholder for a no-op
+	/* Suppress unused parameter warnings */
+	(void)stack;
+	(void)line_number;
+	/* This function does nothing, as it's a placeholder for a no-op */
 }

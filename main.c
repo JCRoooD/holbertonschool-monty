@@ -7,37 +7,38 @@
  */
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        fprintf(stderr, "Usage: monty file");
-            exit(EXIT_FAILURE);
-    }
+	if (argc != 2)
+	{
+		fprintf(stderr, "Usage: monty file");
+		exit(EXIT_FAILURE);
+	}
 
-    FILE *file = fopen(argv[1], "r"); /*open file read only*/
-    if (file == NULL)
-    {
-        fprintf(stderr, "Error: Cannot open file %s\n", argv[1]);
-        exit(EXIT_FAILURE);
-    }
+	FILE *file = fopen(argv[1], "r"); /*open file read only*/
 
-    stack_t *stack = NULL;
+	if (file == NULL)
+	{
+		fprintf(stderr, "Error: Cannot open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
 
-    char *line = NULL;
-    size_t len = 0;
-    unsigned int line_number = 0;
+	stack_t *stack = NULL;
 
-    while (getline(&line, &len, file) != -1)
-    {
-        line_number++;
-        execute_instruction(&stack, line, line_number);
-    }
-    fclose(file);
-    free_stack(stack);
+	char *line = NULL;
+	size_t len = 0;
+	unsigned int line_number = 0;
 
-    if (line)
-        free(line);
+	while (getline(&line, &len, file) != -1)
+	{
+		line_number++;
+		execute_instruction(&stack, line, line_number);
+	}
+	fclose(file);
+	free_stack(stack);
 
-    exit(EXIT_SUCCESS);
+	if (line)
+		free(line);
+
+	exit(EXIT_SUCCESS);
 }
 
 #include "monty.h"
@@ -51,12 +52,12 @@ int main(int argc, char *argv[])
  */
 void free_stack(stack_t *stack)
 {
-    stack_t *current;
+	stack_t *current;
 
-    while (stack != NULL)
-    {
-        current = stack;
-        stack = stack->next;
-        free(current);
-    }
+	while (stack != NULL)
+	{
+		current = stack;
+		stack = stack->next;
+		free(current);
+	}
 }

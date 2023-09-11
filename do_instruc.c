@@ -10,46 +10,84 @@
  */
 void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 {
-    char *opcode, *argument;
-    unsigned int value;
+	char *opcode, *argument;
+	unsigned int value;
 
-    opcode = strtok(line, " \t\n");
-    if (opcode == NULL)
-        return;
+	opcode = strtok(line, " \t\n");
+	if (opcode == NULL)
+		return;
 
-    instruction_t instructions[] = {
-        {"push", push},
-        {"pall", pall},
-        {"pop", pop},
-        {"swap", swap},
-        {"add", add},
-        {"pint", pint},
-        {"nop", nop},
-        {NULL, NULL}
-    };
+	instruction_t instructions[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"pint", pint},
+		{"nop", nop},
+		{NULL, NULL}};
 
-    for (int i = 0; instructions[i].opcode != NULL; i++)
-    {
-        if (strcmp(opcode, instructions[i].opcode) == 0)
-        {
-            if (strcmp(opcode, "push") == 0)
-            {
-                argument = strtok(NULL, " \t\n");
-                if (argument == NULL)
-                {
-                    fprintf(stderr, "L%u: usage push integer\n", line_number);
-                    exit(EXIT_FAILURE);
-                }
-                value = atoi(argument);
-                instructions[i].f(stack, value);
-            }
-            else
-            {
-                instructions[i].f(stack, line_number);
-            }
-            return;
-        }
-    }
-    fprintf(stderr, "L%u: unknown instructions %s\n", line_number, opcode);
-    exit(EXIT_FAILURE);
+	for (int i = 0; instructions[i].opcode != NULL; i++)
+	{
+		if (strcmp(opcode, instructions[i].opcode) == 0)
+		{
+			if (strcmp(opcode, "push") == 0)
+			{
+				argument = strtok(NULL, " \t\n");
+				if (argument == NULL)
+				{
+					fprintf(stderr, "L%u: usage push integer\n", line_number);
+					exit(EXIT_FAILURE);
+				}
+				value = atoi(argument);
+				instructions[i].f(stack, value);
+			}
+			else
+			{
+				instructions[i].f(stack, line_number);
+			}
+			return;
+		}
+	}
+	fprintf(stderr, "L%u: unknown instructions %s\n", line_number, opcode);
+	exit(EXIT_FAILURE);
+}
+
+
+void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
+{
+	char *opcode = strtok(line, " \t\n");
+	if (!opcode) return;
+
+	instruction_t instructions[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"pint", pint},
+		{"nop", nop},
+		{NULL, NULL}
+	};
+
+	for (int i = 0; instructions[i].opcode; i++)
+	{
+		if (!strcmp(opcode, instructions[i].opcode))
+		{
+			if (!strcmp(opcode, "push"))
+			{
+				char *arg = strtok(NULL, " \t\n");
+				if (!arg || (!isdigit(*arg) && *arg != '-' && *arg != '+'))
+				{
+					fprintf(stderr, "L%u: usage: push integer\n", line_number);
+					exit(EXIT_FAILURE);
+				}
+				instructions[i].f(stack, atoi(arg));
+			}
+			else instructions[i].f(stack, line_number);
+			return;
+		}
+	}
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+	exit(EXIT_FAILURE);
 }

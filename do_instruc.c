@@ -11,7 +11,7 @@
 
 void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 {
-	char *opcode = strtok(line, " \t\n");
+	char *opcode = strtok(line, " \t\n$");
 
 	if (!opcode)
 		return;
@@ -32,7 +32,7 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 		{
 			if (!strcmp(opcode, "push"))
 			{
-				char *arg = strtok(NULL, " \t\n");
+				char *arg = strtok(NULL, " \t\n$");
 
 				if (!arg || (!isdigit(*arg) && *arg != '-' && *arg != '+'))
 				{

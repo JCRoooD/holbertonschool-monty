@@ -34,7 +34,7 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 			{
 				char *arg = strtok(NULL, " \t\n$");
 
-				if (!arg || (!isdigit(*arg) && *arg != '-' && *arg != '+'))
+				if (!isdigit(*arg) && *arg != '-' && *arg != '+')
 				{
 					fprintf(stderr, "L%u: usage: push integer\n", line_number);
 					exit(EXIT_FAILURE);
@@ -42,9 +42,7 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 				instructions[i].f(stack, atoi(arg));
 			}
 			else
-			{
 				instructions[i].f(stack, line_number);
-			}
 			return;
 		}
 	}

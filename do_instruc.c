@@ -34,7 +34,7 @@ void execute_instruction(stack_t **stack, char *line, unsigned int line_number)
 			{
 				char *arg = strtok(NULL, " \t\n$");
 
-				if (!isdigit(*arg) && *arg != '-' && *arg != '+')
+				if (_integer(arg))
 				{
 					fprintf(stderr, "L%u: usage: push integer\n", line_number);
 					exit(EXIT_FAILURE);

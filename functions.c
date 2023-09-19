@@ -119,3 +119,23 @@ void swap(stack_t **stack, unsigned int line_number)
 	/* Update the stack pointer to point to the new top element */
 	*stack = temp;
 }
+
+/**
+ * _integer - Check if a string contains an integer.
+ * @str: The string to check.
+ * Return: 0 if the string contains an integer, otherwise 1.
+ */
+int _integer(const char *str)
+{
+	if (!str || !*str || (*str != '-' && !isdigit(*str)))
+		return (0);
+		
+	int i;
+
+	for (i = 1; str[i]; i++)
+	{
+		if (isdigit(str[i]))
+			return (0);
+	}
+	return (1);
+}

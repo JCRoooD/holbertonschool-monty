@@ -134,7 +134,7 @@ int _integer(const char *str)
 
 	for (i = 1; str[i]; i++)
 	{
-		if (isdigit(str[i]))
+		if (!isdigit(str[i]))
 			return (0);
 	}
 	return (1);

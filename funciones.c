@@ -74,7 +74,7 @@ void nop(stack_t **stack, unsigned int line_number)
  * @str: The string to check.
  * Return: 0 if the string contains an integer, otherwise 1.
  */
-int _integer(char *str)
+int _integer(const char *str)
 {
 	int i;
 

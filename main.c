@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 
 	while (getline(&line, &len, file) != -1)
 	{
+		printf("line: %s");
 		line_number++;
 		execute_instruction(&stack, line, line_number);
 	}

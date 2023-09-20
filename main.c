@@ -29,10 +29,11 @@ int main(int argc, char *argv[])
 
 	while (getline(&line, &len, file) != -1)
 	{
-		printf("line: %s");
+		printf("inside line");
 		line_number++;
 		execute_instruction(&stack, line, line_number);
 	}
+	printf("outside line");
 	fclose(file);
 	free_stack(stack);
 
